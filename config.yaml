@@ -1,0 +1,65 @@
+# Configuração do mapa — copie este arquivo para fazer outros mapas
+# (ex.: config_romarias.yaml) e rode: python mapa.py config_romarias.yaml
+
+pontos: dados/alunos_egressos_promep.kmz # KMZ ou KML exportado do Google My Maps
+
+malhas:
+  municipios: dados/go_municipios.geojson
+  estados: dados/br_estados.geojson
+
+titulo: "Alunos e egressos do PROMEP/UEG por município de origem — Goiás"
+fonte: "Fonte: dados do PROMEP (Google My Maps); malhas municipal e estadual baseadas no IBGE (geodata-br). Coordenadas geográficas, datum WGS84."
+
+saida: saida/mapa_promep_goias # sem extensão
+formatos: [png, pdf, svg]
+dpi: 300
+exportar_tabela: true # gera também um CSV com município e código IBGE de cada ponto
+
+pintar_municipios: true # preenche os municípios que contêm pontos
+localizador: true # mapa do Brasil no canto
+legenda_pontos: "Município atendido ({n} no total, incluindo a sede)" # {n} = todos os pontos; {n_sem_destaque} = sem contar destaques
+legenda_municipios: "Área dos municípios atendidos"
+
+cores:
+  ponto: "#0b6e99"
+  municipio_destacado: "#cfe3ef"
+
+# Pontos com marcador especial (nome igual ao do KMZ)
+destaques:
+  "Goiás":
+    legenda: "Sede do PROMEP - Cidade de Goiás (Câmpus Cora Coralina)"
+    cor: "#c0392b"
+    marcador: "*"
+
+rotulos:
+  mostrar: true
+  tamanho: 7.2
+  deslocamento_padrao: 0.10 # sem posição definida, o rótulo vai à direita do ponto
+  ocultar: ["Goiás"] # a estrela já está explicada na legenda
+  renomear:
+    "Goiás": "Cidade de Goiás"
+  # Posições manuais (lon/lat do rótulo). alinhar: left | right | center. linha: desenha linha-guia.
+  posicoes:
+    "Itapirapuã": { x: -50.61, y: -15.69, alinhar: center }
+    "Faina": { x: -50.36, y: -15.30, alinhar: center }
+    "Matrinchã": { x: -50.85, y: -15.43, alinhar: right }
+    "Jussara": { x: -50.97, y: -15.87, alinhar: right }
+    "Itapuranga": { x: -49.94, y: -15.42, alinhar: center }
+    "Ceres": { x: -49.60, y: -15.15, alinhar: center }
+    "Santa Isabel": { x: -49.33, y: -15.31 }
+    "Heitoraí": { x: -48.95, y: -15.45, linha: true }
+    "Itaguaru": { x: -48.95, y: -15.65, linha: true }
+    "Itaguari": { x: -48.95, y: -15.85, linha: true }
+    "Itaberaí": { x: -48.95, y: -16.03, linha: true }
+    "Itauçu": { x: -48.95, y: -16.20, linha: true }
+    "Inhumas": { x: -48.95, y: -16.38, linha: true }
+    "Mossâmedes": { x: -50.31, y: -16.08, alinhar: right }
+    "Americano do Brasil": { x: -50.32, y: -16.31, alinhar: right, linha: true }
+    "Anicuns": { x: -49.86, y: -16.52 }
+    "São Luís de Montes Belos": { x: -50.37, y: -16.70, alinhar: center }
+    "Iporá": { x: -51.12, y: -16.60, alinhar: center }
+    "Piranhas": { x: -51.93, y: -16.43, alinhar: right }
+    "Valparaíso de Goiás": { x: -47.86, y: -15.98 }
+    "Luziânia": { x: -47.83, y: -16.30 }
+    "Jataí": { x: -51.73, y: -18.05, alinhar: center }
+    "Rio Verde": { x: -50.92, y: -17.95, alinhar: center }
